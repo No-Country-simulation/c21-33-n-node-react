@@ -2,8 +2,9 @@ import { createTheme } from "@mui/material";
 
 export const commonsCustonColors = {
     custom: {
-        main: '##3A0CA3',
+        main: '#3A0CA3',
         secondary: '#560BAD',
+        tertiary: '#B5179E'
     }
 }
 

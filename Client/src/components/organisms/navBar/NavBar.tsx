@@ -10,7 +10,7 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import Logo from "../../assets/icon-logo.svg";
+import Logo from "../../../assets/icons/icon-logo.svg";
 import { useTheme } from '@mui/material';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -37,11 +37,17 @@ function ResponsiveAppBar() {
     };
 
     return (
-        <AppBar position="static">
-            <Container maxWidth="xl" sx={{ backgroundColor: theme.palette.background.paper }}>
+        <AppBar
+            position="static"
+            sx={{
+                backgroundColor: theme.palette.background.paper,
+                boxShadow: `0px 4px 4px 0px ${theme.palette.custom.secondary}`
+            }}>
+            <Container maxWidth="xl" >
                 <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
 
-                    <Logo style={{ width: '4rem' }} />
+                    {/*  @ts-ignore */}
+                    <Logo style={{ width: '5rem', height: '5rem' }} />
 
                     <Box sx={{ flexGrow: 0, display: 'flex' }}>
 

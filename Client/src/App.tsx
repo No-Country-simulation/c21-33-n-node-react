@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from './store/store'
 import { ThemeProvider } from '@mui/material'
 import { themeDark, themeLight } from './theme/theme'
-import ResponsiveAppBar from './components/navBar/NavBar'
+import Routes from './routes/Routes'
 
 function App() {
   const { theme } = useSelector((state: RootState) => state.theme);
@@ -13,7 +13,7 @@ function App() {
   return (
     <ThemeProvider theme={theme === 'dark' ? themeDark : themeLight}>
       <CssBaseline>
-        <ResponsiveAppBar />
+        <Routes />
       </CssBaseline>
     </ThemeProvider>
   )
