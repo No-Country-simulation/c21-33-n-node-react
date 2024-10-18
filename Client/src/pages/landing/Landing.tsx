@@ -6,6 +6,7 @@ import PrimaryButtom from '../../components/atoms/buttoms/PrimaryButtom'
 import { MainStyles } from '../../styles/MainStyles'
 import { LandingStyles } from '../../styles/componets/LandingStyles'
 import { useNavigate } from 'react-router-dom'
+import { routesPath } from '../../utils/routesPath/routesPath'
 
 const Landing = () => {
     //https://jsonplaceholder.typicode.com/todos/1
@@ -14,7 +15,7 @@ const Landing = () => {
     const navigate = useNavigate();
 
     const handleNavigate = () => {
-        navigate('app/login')
+        navigate(routesPath.login)
     };
 
     return (

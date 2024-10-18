@@ -2,7 +2,7 @@ import { Button, Container, FormControl, FormHelperText, Grid2, TextField, Typog
 import LogInImg from '../../assets/images/login_img.png';
 import { MainStyles } from "../../styles/MainStyles";
 import { Controller, useForm } from "react-hook-form";
-import { regExValidation } from "../../utils/interfaces/Validations";
+import { regExValidation } from "../../utils/validations/Validations";
 import { LogInData } from "../../utils/interfaces/interfaces";
 import { LogInStyles } from "../../styles/componets/LogInStyles";
 import { useRef } from "react";
