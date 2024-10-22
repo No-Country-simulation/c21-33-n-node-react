@@ -4,7 +4,8 @@ export const commonsCustonColors = {
     custom: {
         main: '#3A0CA3',
         secondary: '#560BAD',
-        tertiary: '#B5179E'
+        tertiary: '#B5179E',
+        quaternary: '#4BC9F1'
     }
 }
 
