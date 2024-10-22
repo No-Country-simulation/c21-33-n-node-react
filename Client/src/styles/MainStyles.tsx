@@ -14,6 +14,6 @@ export const MainStyles = makeStyles()((theme) => ({
 
     maxWidth: {
         maxWidth: '100%'
-    }
+    },
 
 }));

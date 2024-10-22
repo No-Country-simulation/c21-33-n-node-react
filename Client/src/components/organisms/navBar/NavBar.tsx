@@ -12,12 +12,18 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Logo from "../../../assets/icons/icon-logo.svg";
 import { useTheme } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../../store/store';
+import { openDrawer } from '../../../store/features/drawer/drawerSlice';
+import { Close } from '@mui/icons-material';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
     //const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+    const isOpenDrawer = useSelector((state: RootState) => state.drawer.value);
+    const dispatch = useDispatch();
 
     const theme = useTheme();
 
@@ -31,6 +37,10 @@ function ResponsiveAppBar() {
     /* const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     }; */
+
+    const handleOpenDrawer = () => {
+        dispatch(openDrawer(isOpenDrawer ? false : true))
+    };
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
@@ -85,10 +95,14 @@ function ResponsiveAppBar() {
                                 aria-label="account of current user"
                                 aria-controls="menu-appbar"
                                 aria-haspopup="true"
-                                //onClick={handleOpenNavMenu}
-                                color="inherit"
+                                onClick={handleOpenDrawer}
+                                //color="white"
                             >
-                                <MenuIcon />
+                                {isOpenDrawer ?
+                                    <MenuIcon /> :
+                                    <Close />
+
+                                }
                             </IconButton>
                         </Box>
                     </Box>
