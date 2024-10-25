@@ -39,7 +39,14 @@ export const LogInStyles = makeStyles()((theme) => ({
         alignItems: 'center' */
     },
     smallText: {
+        margin: '1rem 0 0 0',
         fontSize: '.7rem'
+    },
+    smallText_Link: {
+        fontSize: '.7rem',
+        color: theme.palette.primary.main,
+        cursor: 'pointer',
+        textDecoration: 'none'
     },
     loginForm_box: {
         display: 'flex',

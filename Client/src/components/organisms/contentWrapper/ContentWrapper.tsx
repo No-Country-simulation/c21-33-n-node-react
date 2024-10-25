@@ -1,15 +1,17 @@
-import { Box } from "@mui/material"
+import { Grid2 } from "@mui/material"
 import Drawer from "../drawer/Drawer"
 import ResponsiveAppBar from "../navBar/NavBar"
 import { Outlet } from "react-router-dom"
 
 const ContentWrapper = () => {
     return (
-        <Box sx={{ display: 'contens', position: 'relative' }}>
+        <Grid2 sx={{ display: 'contens', position: 'relative' }}>
             <ResponsiveAppBar />
-            <Drawer />
-            <Outlet />
-        </Box>
+            <Grid2 sx={{ display: 'flex' }}>
+                <Drawer />
+                <Outlet />
+            </Grid2>
+        </Grid2>
     )
 }
 

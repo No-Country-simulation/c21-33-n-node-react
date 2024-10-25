@@ -1,52 +1,115 @@
-import { Container } from "@mui/material"
-import { useForm } from "react-hook-form";
-import { RegisterUserAccount } from "../../utils/interfaces/interfaces";
-import InputText from "../../components/organisms/inputText/InputText";
+import { SubmitHandler, useForm } from "react-hook-form";
+
+import { Box, Button, Container, Grid2, Typography } from "@mui/material"
+
+import { RegisterUserAccount } from "../../utils/interfaces/userInterfaces";
+import InputText from "@/components/organisms/inputText/InputText";
+import LogInImg from "@/assets/images/login_img.png";
+import { LogInStyles } from "@/styles/componets/LogInStyles";
+import { MainStyles } from "@/styles/MainStyles";
+import { StylesButtoms } from "@/components/atoms/buttoms/StylesButtoms";
+import ResponsiveAppBar from "@/components/organisms/navBar/NavBar";
+import { Link } from "react-router-dom";
+import { routesLinkTo } from '../../utils/routesPath/routesPath';
+
 
 const RegisterUSerAccount = () => {
 
-    const { handleSubmit, setValue } = useForm();
+    const { control, handleSubmit, setValue } = useForm<RegisterUserAccount>({
+        defaultValues: {
+            fullName: "",
+            email: "",
+            password: "",
+            passwordRepeat: ""
 
-    const handleSubmitData = (data: RegisterUserAccount) => {
+        }
+    });
+
+    const { classes: styles } = MainStyles();
+    const { classes: stylesLogIn } = LogInStyles();
+    const { classes: stylesButtons } = StylesButtoms();
+
+    const handleSubmitData: SubmitHandler<RegisterUserAccount> = (data) => {
         console.log(data)
     };
 
     return (
-        <Container>
-            <form
-                onSubmit={handleSubmit(handleSubmitData)}
-            //className={stylesLogIn.formStyles}
-            >
-                <InputText
-                    inputName='name'
-                    htmlFor='name'
-                    label='Nombre'
-                    placeHolder='Ingresa tu nombre'
-                />
+        <>
+            <ResponsiveAppBar />
 
-                <InputText
-                    inputName='email'
-                    htmlFor='email'
-                    label='Correo'
-                    placeHolder='Ingresa tu correo'
-                />
+            <Container>
 
-                <InputText
-                    inputName='password'
-                    htmlFor='password'
-                    label='Contraseña'
-                    placeHolder='Ingresa tu contraseña'
-                />
+                <Grid2 container className={styles.container_Section}>
+                    <Grid2 size={{ md: 6 }}>
+                        <form
+                            onSubmit={handleSubmit(handleSubmitData)}
+                        //className={stylesLogIn.formStyles}
+                        >
+                            <InputText
+                                autocomplete='name'
+                                inputName='fullName'
+                                control={control}
+                                htmlFor='fullName'
+                                label='Nombre'
+                                placeHolder='Ingresa tu nombre'
+                                inputType='text'
+                            />
 
-                <InputText
-                    inputName='password-repeat'
-                    htmlFor='password-repeat'
-                    label='Repite contraseña'
-                    placeHolder='Repite tu contraseña'
-                />
+                            <InputText
+                                autocomplete='email'
+                                inputName='email'
+                                control={control}
+                                htmlFor='email'
+                                label='Correo'
+                                placeHolder='Ingresa tu correo'
+                                inputType='text'
+                            />
 
-            </form>
-        </Container>
+                            <InputText
+                                autocomplete='off'
+                                inputName='password'
+                                control={control}
+                                htmlFor='password'
+                                label='Contraseña'
+                                placeHolder='Ingresa tu contraseña'
+                                inputType='password'
+                            />
+
+                            <InputText
+                                autocomplete='off'
+                                inputName='passwordRepeat'
+                                control={control}
+                                htmlFor='password-repeat'
+                                label='Confirma contraseña'
+                                placeHolder='Repite tu contraseña'
+                                inputType='password'
+                            />
+
+                            <Box className={styles.center_Element}>
+                                <Button
+                                    type="submit"
+                                    className={stylesButtons.primaryButton}
+                                    sx={{ width: '15rem !important', margin: '1rem 0 0 0' }}
+                                >
+                                    Crear cuenta
+                                </Button>
+
+                                <Typography className={stylesLogIn.smallText}>
+                                    Ya tienes una cuenta? {" "}
+                                    <Link to={routesLinkTo.login} className={stylesLogIn.smallText_Link}>
+                                        inicia sesion aqui
+                                    </Link>
+                                </Typography>
+                            </Box>
+                        </form>
+                    </Grid2>
+
+                    <Grid2 size={{ md: 6 }} className={stylesLogIn.logInImg_Box}>
+                        <img src={LogInImg} alt="imagen-login" className={stylesLogIn.logInImg} />
+                    </Grid2>
+                </Grid2>
+            </Container>
+        </>
     )
 }
 

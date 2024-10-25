@@ -5,9 +5,10 @@ interface Routes {
 export const routesPath: Routes = {
     home: '/app',
     landing: '/',
-    login: 'login',
+    login: '/login',
     newEmploye: 'new-employe',
-    profile: 'profile'
+    profile: 'profile',
+    registerAccount: '/create-account'
 }
 
 export const routesLinkTo: Routes = {
@@ -15,5 +16,6 @@ export const routesLinkTo: Routes = {
     landing: `${routesPath.landing}`,
     login: `${routesPath.login}`,
     newEmploye: `${routesPath.home}/${routesPath.newEmploye}`,
-    profile: `${routesPath.home}/${routesPath.profile}`
+    profile: `${routesPath.home}/${routesPath.profile}`,
+    registerAccount: '/create-account'
 }

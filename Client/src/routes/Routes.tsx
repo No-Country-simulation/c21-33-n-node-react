@@ -6,6 +6,7 @@ import ContentWrapper from "../components/organisms/contentWrapper/ContentWrappe
 import Home from "../pages/home/Home"
 import Profile from "../pages/profile/Profile"
 import { routesPath } from "../utils/routesPath/routesPath"
+import RegisterUSerAccount from "@/pages/registerUserAccount/RegisterUSerAccount";
 
 const Routes = () => {
     return (
@@ -15,13 +16,15 @@ const Routes = () => {
 
             <Route path={routesPath.login} element={<Login />} />
 
+            <Route path={routesPath.registerAccount} element={<RegisterUSerAccount />} />
+
             <Route path={routesPath.home} element={<ContentWrapper />} >
                 <Route index element={<Home />} />
                 <Route path="profile" element={<Profile />} />
                 <Route path="inventory" element={<Home />} />
                 <Route path="sales" element={<Home />} />
                 <Route path={routesPath.employes} element={<Home />} />
-                <Route path={routesPath.newEmploye} element={<Home />} />
+                <Route path={routesPath.newEmploye} element={<RegisterUSerAccount />} />
             </Route>
         </RouterRoutes>
     )

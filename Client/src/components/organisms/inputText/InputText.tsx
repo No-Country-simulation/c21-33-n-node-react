@@ -1,12 +1,24 @@
-import { FormControl, FormHelperText, Grid2, TextField, Typography } from "@mui/material";
-import { Controller, useForm } from "react-hook-form";
-import { StylesOrganism } from '../StylesOrganism';
+import { Controller } from "react-hook-form";
 
-const InputText = ({ inputName, htmlFor, label, placeHolder }) => {
+import {
+    FormControl, FormHelperText, Grid2, TextField, Typography
+} from "@mui/material";
+
+import { StylesOrganism } from '../StylesOrganism';
+import { InputTextRegisterAccount } from "@/utils/interfaces";
+
+const InputText = ({
+    autocomplete,
+    htmlFor,
+    control,
+    inputName,
+    inputType,
+    label,
+    placeHolder,
+}: InputTextRegisterAccount) => {
 
 
     const { classes: stylesOrganmis } = StylesOrganism();
-    const { control } = useForm();
 
     return (
         <Grid2 className={stylesOrganmis.formInput}>
@@ -43,8 +55,9 @@ const InputText = ({ inputName, htmlFor, label, placeHolder }) => {
 
                         <TextField
                             id={inputName}
-                            autoComplete="email"
-                            type="text"
+                            name={inputName}
+                            autoComplete={autocomplete}
+                            type={inputType}
                             error={!!fieldState.error}
                             ref={ref}
                             onBlur={onBlur}
