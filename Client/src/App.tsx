@@ -1,7 +1,7 @@
 import './App.css'
 import { CssBaseline } from '@mui/material'
 import { useSelector } from 'react-redux'
-import { RootState } from './store/store'
+import { RootState } from './redux/store'
 import { ThemeProvider } from '@mui/material'
 import { themeDark, themeLight } from './theme/theme'
 import Routes from './routes/Routes'

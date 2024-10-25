@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { DrawerStyles } from "../../../styles/componets/DrawerStyles"
-import { RootState } from "../../../store/store";
+import { RootState } from "../../../redux/store";
 import {
     IconInvetory, IconLogoDrawer, IconGrowing,
     IconUsers, IconEntryData, IconUserProfile

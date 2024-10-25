@@ -1,9 +1,9 @@
 //import React from 'react'
 import { Button, Container } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
-import { decrement, increment, incrementByAmount } from '../../store/features/counter/counterSlice';
-import { changeThemeMode } from '../../store/features/themeMode/themeSlice';
+import { RootState } from '../../redux/store';
+import { decrement, increment, incrementByAmount } from '../../redux/features/counter/counterSlice';
+import { changeThemeMode } from '../../redux/features/themeMode/themeSlice';
 
 const Home = () => {
 
