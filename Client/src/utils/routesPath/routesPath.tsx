@@ -1,5 +1,21 @@
-export const routesPath = {
-    home: 'app/home',
+interface Routes {
+    [key: string]: string
+};
+
+export const routesPath: Routes = {
+    home: '/app',
     landing: '/',
-    login: 'app/login',
+    login: '/login',
+    newEmploye: 'new-employe',
+    profile: 'profile',
+    registerAccount: '/create-account'
+}
+
+export const routesLinkTo: Routes = {
+    home: `${routesPath.home}`,
+    landing: `${routesPath.landing}`,
+    login: `${routesPath.login}`,
+    newEmploye: `${routesPath.home}/${routesPath.newEmploye}`,
+    profile: `${routesPath.home}/${routesPath.profile}`,
+    registerAccount: '/create-account'
 }

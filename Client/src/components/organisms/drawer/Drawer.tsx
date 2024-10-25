@@ -55,7 +55,7 @@ const Drawer = () => {
         <Grid2 className={stylesDrawer.container} sx={{
             left: {
                 xs: isOpenDrawer ? '-100%' : '0',
-                md: '0'
+                lg: '0'
             }
         }}
         >

@@ -3,12 +3,14 @@ import LogInImg from '../../assets/images/login_img.png';
 import { MainStyles } from "../../styles/MainStyles";
 import { Controller, useForm } from "react-hook-form";
 import { regExValidation } from "../../utils/validations/Validations";
-import { LogInData } from "../../utils/interfaces/interfaces";
+import { LogInData } from "../../utils/interfaces/userInterfaces";
 import { LogInStyles } from "../../styles/componets/LogInStyles";
 import { useRef } from "react";
 import { StylesButtoms } from "../../components/atoms/buttoms/StylesButtoms";
 import ResponsiveAppBar from "../../components/organisms/navBar/NavBar";
 import { getDate } from "../../utils/utilities/Utilities";
+import { Link } from "react-router-dom";
+import { routesLinkTo } from "@/utils/routesPath/routesPath";
 
 const Login = () => {
 
@@ -191,6 +193,13 @@ const Login = () => {
 
             <Typography className={stylesLogIn.smallText}>
               ¿Olvidaste tu contraseña? Recupérala aquí.
+            </Typography>
+
+            <Typography className={stylesLogIn.smallText}>
+              Aun no tienes una cuenta? {" "}
+              <Link to={routesLinkTo.registerAccount} className={stylesLogIn.smallText_Link}>
+                Creala aqui
+              </Link>
             </Typography>
 
           </Grid2>

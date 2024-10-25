@@ -9,7 +9,9 @@ export const DrawerStyles = makeStyles()((theme) => ({
         textAlign: 'center',
         margin: '.25rem 0 0 0',
         position: 'absolute',
-        [theme.breakpoints.up('md')]: {
+        zIndex: '100',
+        [theme.breakpoints.up('lg')]: {
+            position: 'static',
             width: '20rem',
             height: 'calc(100vh - 5.25rem)'
         }
