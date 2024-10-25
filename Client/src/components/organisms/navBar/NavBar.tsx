@@ -13,8 +13,8 @@ import MenuItem from '@mui/material/MenuItem';
 import Logo from "../../../assets/icons/icon-logo.svg";
 import { useTheme } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../store/store';
-import { openDrawer } from '../../../store/features/drawer/drawerSlice';
+import { RootState } from '../../../redux/store';
+import { openDrawer } from '../../../redux/features/drawer/drawerSlice';
 import { Close } from '@mui/icons-material';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
