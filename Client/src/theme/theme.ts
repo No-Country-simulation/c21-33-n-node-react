@@ -1,5 +1,14 @@
 import { createTheme } from "@mui/material";
 
+export const commonsCustonColors = {
+    custom: {
+        main: '#3A0CA3',
+        secondary: '#560BAD',
+        tertiary: '#B5179E',
+        quaternary: '#4BC9F1'
+    }
+}
+
 const commonsProperties = {
     typography: {
         fontFamily: [
@@ -26,9 +35,10 @@ export const themeLight = createTheme({
             contrastText: '#fff'
         },
         background: {
-            paper: '#fff',
-            default: '#fff'
-        }
+            paper: '#FCFCFC',
+            default: '#FCFCFC'
+        },
+        ...commonsCustonColors
     },
     ...commonsProperties
 });
@@ -44,7 +54,8 @@ export const themeDark = createTheme({
         background: {
             paper: '#2A2438',
             default: '#2A2438'
-        }
+        },
+        ...commonsCustonColors
     },
     ...commonsProperties
 });
