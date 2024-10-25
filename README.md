@@ -27,13 +27,13 @@ This human resource management application allows companies to manage and optimi
       alt="Our logo">
         </img>
   </a>
- <a href="https://www.figma.com/file/whFdRjdGkETklZeApj2Sw4/Ecommerce-Fast-Food--Simulaci%C3%B3n-Laboral?type=design&node-id=36-138&mode=design&t=mfjD3FZX6Ew2uh1B-0" target="_blank">    
+ <a href="https://www.figma.com/design/fnI1QtamZGIW4NaNactfFP/Proyecto-No-Country?node-id=0-1&node-type=canvas&t=wnEFcTHNe0krCLh5-0" target="_blank">    
           <img 
       style="display: block; 
             margin-left: auto;
             margin-right: auto;
             width: 10%;"
-      src="https://img.shields.io/badge/Dise%C3%B1o-000000" 
+      src="https://img.shields.io/badge/Dise%C3%B1o-000000 "
       alt="Our logo">
   </img>
     </a>
