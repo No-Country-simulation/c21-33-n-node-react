@@ -1,5 +1,5 @@
 import type { Request, RequestHandler, Response } from "express";
-
+import prisma from '../../../prisma/connection/prisma.connection';
 import { userService } from "@/api/user/userService";
 import { handleServiceResponse } from "@/common/utils/httpHandlers";
 

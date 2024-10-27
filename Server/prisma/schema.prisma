@@ -13,8 +13,37 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model user {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+model userStatus {
+  id          Int     @id @default(autoincrement())
+  code        String  @unique @db.VarChar(3)  
+  description String  @db.VarChar(20)         
+  
+  users       user[]
 }
+
+model user {
+  id              Int      @id @default(autoincrement())
+  email           String   @unique @db.VarChar(50)
+  password        String   @db.VarChar(20)
+  nombre          String   @db.VarChar(50)
+  apellido        String   @db.VarChar(50)
+  direccion       String   @db.VarChar(100)
+  piso            Int
+  departamento    Int
+  dni             Int
+  fechaNacimiento DateTime @db.Timestamp(3)
+  pasaporte       Int 
+  pais            String   @db.VarChar(35)
+  localidad       String   @db.VarChar(35)
+  celular         String   @db.VarChar(15)
+  celularOpcional String   @db.VarChar(15)
+  codigoPostal    Int
+  numeroLegajo    Int 
+  fechaInicio     DateTime @db.Timestamp(3)
+
+  statusId        Int
+  status          userStatus  @relation(fields: [statusId], references: [id])
+}
+
+
+
