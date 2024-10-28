@@ -55,7 +55,7 @@ export const LogInStyles = makeStyles()((theme) => ({
     },
     logInImg_Box: {
         display: 'none',
-        [theme.breakpoints.up('md')]: {
+        [theme.breakpoints.up('lg')]: {
             display: 'flex',
             justifyContent: 'center'
         }
@@ -63,7 +63,9 @@ export const LogInStyles = makeStyles()((theme) => ({
     logInImg: {
         border: `.5rem solid ${theme.palette.custom.tertiary}`,
         borderRadius: '1rem',
-        padding: '0'
+        padding: '0',
+        width: '25rem',
+        height: '30rem'
     }
 
 }));

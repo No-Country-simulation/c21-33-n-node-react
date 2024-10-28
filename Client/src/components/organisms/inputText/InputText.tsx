@@ -15,22 +15,29 @@ const InputText = ({
     inputType,
     label,
     placeHolder,
+    pattern,
+    required,
+    size
 }: InputTextRegisterAccount) => {
 
 
     const { classes: stylesOrganmis } = StylesOrganism();
 
     return (
-        <Grid2 className={stylesOrganmis.formInput}>
+        <Grid2 className={stylesOrganmis.formInput} size={{ xs: size }}>
             <Controller
                 name={inputName}
                 control={control}
                 rules={{
-                    required: "Este campo es requerido",
-                    /* pattern: {
-                        message: "Formato de correo inválido",
-                        value: regExValidation.email,
-                    }, */
+                    ...(required &&
+                        { required: "Este campo es requerido" }
+                    ),
+                    ...(pattern && {
+                        pattern: {
+                            message: pattern.message,
+                            value: pattern.value,
+                        },
+                    })
                 }}
                 render={({
                     field: {

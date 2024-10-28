@@ -7,6 +7,7 @@ import Home from "../pages/home/Home"
 import Profile from "../pages/profile/Profile"
 import { routesPath } from "../utils/routesPath/routesPath"
 import RegisterUSerAccount from "@/pages/registerUserAccount/RegisterUSerAccount";
+import NewEmploye from "@/pages/newEmploye/NewEmploye";
 
 const Routes = () => {
     return (
@@ -24,7 +25,7 @@ const Routes = () => {
                 <Route path="inventory" element={<Home />} />
                 <Route path="sales" element={<Home />} />
                 <Route path={routesPath.employes} element={<Home />} />
-                <Route path={routesPath.newEmploye} element={<RegisterUSerAccount />} />
+                <Route path={routesPath.newEmploye} element={<NewEmploye />} />
             </Route>
         </RouterRoutes>
     )

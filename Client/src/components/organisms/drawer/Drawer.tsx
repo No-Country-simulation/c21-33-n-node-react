@@ -10,12 +10,15 @@ import {
 
 
 import { Box, Grid2, Typography } from "@mui/material"
+import { useNavigate } from "react-router-dom";
+import { routesLinkTo } from "@/utils/routesPath/routesPath";
 
 
 const Drawer = () => {
 
     const { classes: stylesDrawer } = DrawerStyles();
     const isOpenDrawer = useSelector((state: RootState) => state.drawer.value);
+    const navigate = useNavigate();
 
     interface MenuOption {
         icon: React.ElementType,
@@ -27,17 +30,17 @@ const Drawer = () => {
         {
             icon: IconUserProfile,
             title: 'Mis datos',
-            path: '',
+            path: routesLinkTo.profile,
         },
         {
             icon: IconInvetory,
             title: 'Inventario',
-            path: '',
+            path: routesLinkTo.profile,
         },
         {
             icon: IconGrowing,
             title: 'Ventas',
-            path: '',
+            path: routesLinkTo.profile,
         },
         {
             icon: IconUsers,
@@ -47,9 +50,14 @@ const Drawer = () => {
         {
             icon: IconEntryData,
             title: 'Ingreso de empleados',
-            path: '',
+            path: routesLinkTo.newEmploye,
         },
     ]
+
+    const handleNavigate = (url: string) => {
+        console.log(url);
+        navigate(url);
+    };
 
     return (
         <Grid2 className={stylesDrawer.container} sx={{
@@ -64,7 +72,11 @@ const Drawer = () => {
 
             {
                 menuOptions.map(option => (
-                    <Box key={option.title} className={stylesDrawer.menuOption}>
+                    <Box
+                        key={option.title}
+                        className={stylesDrawer.menuOption}
+                        onClick={() => handleNavigate(option.path)}
+                    >
                         <option.icon styles={stylesDrawer.iconsSidebar} />
                         <Typography>{option.title}</Typography>
                     </Box>

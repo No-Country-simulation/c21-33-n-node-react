@@ -11,11 +11,12 @@ import { StylesButtoms } from "@/components/atoms/buttoms/StylesButtoms";
 import ResponsiveAppBar from "@/components/organisms/navBar/NavBar";
 import { Link } from "react-router-dom";
 import { routesLinkTo } from '../../utils/routesPath/routesPath';
+import { regExValidation } from "@/utils/validations/Validations";
 
 
 const RegisterUSerAccount = () => {
 
-    const { control, handleSubmit, setValue } = useForm<RegisterUserAccount>({
+    const { control, handleSubmit, /* setValue */ } = useForm<RegisterUserAccount>({
         defaultValues: {
             fullName: "",
             email: "",
@@ -53,6 +54,12 @@ const RegisterUSerAccount = () => {
                                 label='Nombre'
                                 placeHolder='Ingresa tu nombre'
                                 inputType='text'
+                                pattern={{
+                                    value: regExValidation.name,
+                                    message: 'Intentas ingresar caracteres no permitidos'
+                                }}
+                                required={true}
+                                size={12}
                             />
 
                             <InputText
@@ -63,6 +70,12 @@ const RegisterUSerAccount = () => {
                                 label='Correo'
                                 placeHolder='Ingresa tu correo'
                                 inputType='text'
+                                pattern={{
+                                    value: regExValidation.email,
+                                    message: 'Intentas ingresar caracteres no permitidos'
+                                }}
+                                required={true}
+                                size={12}
                             />
 
                             <InputText
@@ -73,6 +86,12 @@ const RegisterUSerAccount = () => {
                                 label='Contraseña'
                                 placeHolder='Ingresa tu contraseña'
                                 inputType='password'
+                                pattern={{
+                                    value: regExValidation.general,
+                                    message: 'Intentas ingresar caracteres no permitidos'
+                                }}
+                                required={true}
+                                size={12}
                             />
 
                             <InputText
@@ -83,6 +102,12 @@ const RegisterUSerAccount = () => {
                                 label='Confirma contraseña'
                                 placeHolder='Repite tu contraseña'
                                 inputType='password'
+                                pattern={{
+                                    value: regExValidation.general,
+                                    message: 'Intentas ingresar caracteres no permitidos'
+                                }}
+                                required={true}
+                                size={12}
                             />
 
                             <Box className={styles.center_Element}>

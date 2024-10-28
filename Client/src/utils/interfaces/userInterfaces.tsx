@@ -12,6 +12,25 @@ export interface RegisterUserAccount {
     passwordRepeat: string
 };
 
+export interface RegisterNewEmploye {
+    firstName: string,
+    lastName: string,
+    streetAddress: string,
+    floor: string,
+    apartment: string,
+    dni: string,
+    birthDate: string,
+    passport: string,
+    country: string,
+    city: string,
+    phone: string,
+    phoneHouse: string,
+    postalCode: string,
+    legado: string,
+    email: string,
+    startDate: string,
+};
+
 export interface InputTextRegisterAccount {
     autocomplete: string,
     htmlFor: string,
@@ -20,6 +39,12 @@ export interface InputTextRegisterAccount {
     inputType: string,
     label: string,
     placeHolder: string
+    pattern?: {
+        message: string,
+        value: RegExp
+    },
+    required: boolean,
+    size: number
 }
 
 export interface ISignIn {
