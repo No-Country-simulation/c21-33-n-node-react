@@ -8,6 +8,7 @@ import Profile from "../pages/profile/Profile"
 import { routesPath } from "../utils/routesPath/routesPath"
 import RegisterUSerAccount from "@/pages/registerUserAccount/RegisterUSerAccount";
 import NewEmploye from "@/pages/newEmploye/NewEmploye";
+import EmployeProfile from "@/pages/employeProfile/EmployeProfile";
 
 const Routes = () => {
     return (
@@ -21,11 +22,13 @@ const Routes = () => {
 
             <Route path={routesPath.home} element={<ContentWrapper />} >
                 <Route index element={<Home />} />
-                <Route path="profile" element={<Profile />} />
+                <Route path={routesPath.profileUser} element={<Profile />} />
                 <Route path="inventory" element={<Home />} />
                 <Route path="sales" element={<Home />} />
                 <Route path={routesPath.employes} element={<Home />} />
                 <Route path={routesPath.newEmploye} element={<NewEmploye />} />
+                <Route path={routesPath.profileEmploye} element={<EmployeProfile />} />
+                <Route path={routesPath.editEmployeInfo} element={<NewEmploye />} />
             </Route>
         </RouterRoutes>
     )

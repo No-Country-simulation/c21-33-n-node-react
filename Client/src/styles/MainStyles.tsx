@@ -31,7 +31,9 @@ export const MainStyles = makeStyles()((theme) => ({
     titleSection: {
         color: theme.palette.custom.secondary,
         fontSize: '2rem',
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textAlign: 'center',
+        marginTop: '1rem'
     }
 
 }));

@@ -45,7 +45,13 @@ export interface InputTextRegisterAccount {
     },
     required: boolean,
     size: number
-}
+};
+
+export interface InputTextUserInfoDisabled {
+    label: string,
+    size: number,
+    value: string
+};
 
 export interface ISignIn {
     name: string,

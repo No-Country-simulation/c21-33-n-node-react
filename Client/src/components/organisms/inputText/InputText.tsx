@@ -61,6 +61,7 @@ const InputText = ({
                         </label>
 
                         <TextField
+                            //disabled
                             id={inputName}
                             name={inputName}
                             autoComplete={autocomplete}
