@@ -1,6 +1,6 @@
 import { makeStyles } from "tss-react/mui";
 
-export const StylesOrganism = makeStyles()((theme) => ({
+export const StylesOrganism = makeStyles()((/* theme */) => ({
     regularText: {
         fontSize: '.9rem'
     },
