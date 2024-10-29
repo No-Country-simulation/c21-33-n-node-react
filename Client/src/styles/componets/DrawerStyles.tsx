@@ -26,7 +26,14 @@ export const DrawerStyles = makeStyles()((theme) => ({
         height: '3.5rem',
         '& > p': {
             fontWeight: 'bold'
-        }
+        },
+        '&:hover': {
+            backgroundColor: theme.palette.custom.tertiary,
+            cursor: 'pointer'
+        },
+        /* '&:active':{
+            color: theme.palette.custom.tertiary,
+        } */
     },
 
     mainIconSidebar: {
