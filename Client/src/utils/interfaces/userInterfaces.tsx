@@ -47,6 +47,15 @@ export interface InputTextRegisterAccount {
     size: number
 };
 
+export interface EmployeFormFilter {
+    firstName: string,
+    lastName: string,
+    state: string,
+    IDCode: string,
+    startDate: string,
+    position: string
+}
+
 export interface InputTextUserInfoDisabled {
     label: string,
     size: number,
