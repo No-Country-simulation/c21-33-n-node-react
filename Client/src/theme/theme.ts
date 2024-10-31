@@ -5,7 +5,8 @@ export const commonsCustonColors = {
         main: '#3A0CA3',
         secondary: '#560BAD',
         tertiary: '#B5179E',
-        quaternary: '#4BC9F1'
+        quaternary: '#4BC9F1',
+        quinary: '#D4F8F6'
     }
 }
 

@@ -10,7 +10,7 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import Logo from "../../../assets/icons/icon-logo.svg";
+//import { ReactComponent as Logo } from "../../../../src/assets/icons/icon-logo.svg";
 import { useTheme } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
@@ -57,7 +57,7 @@ function ResponsiveAppBar() {
                 <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
 
                     {/*  @ts-ignore */}
-                    <Logo style={{ width: '5rem', height: '5rem' }} />
+                    {/* <Logo style={{ width: '5rem', height: '5rem' }} /> */}
 
                     <Box sx={{ flexGrow: 0, display: 'flex' }}>
 
