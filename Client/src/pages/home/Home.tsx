@@ -1,18 +1,30 @@
 //import React from 'react'
 import { Button, Container } from '@mui/material'
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store';
-import { decrement, increment, incrementByAmount } from '../../redux/features/counter/counterSlice';
-import { changeThemeMode } from '../../redux/features/themeMode/themeSlice';
+//import { useDispatch, useSelector } from 'react-redux';
+//import { RootState } from '../../redux/store';
+//import { decrement, increment, incrementByAmount } from '../../redux/features/counter/counterSlice';
+//import { changeThemeMode } from '../../redux/features/themeMode/themeSlice';
 
 const Home = () => {
 
-    const { value } = useSelector((state: RootState) => state.counter);
-    const dispatch = useDispatch();
+    /* const { value } = useSelector((state: RootState) => state.counter);
+    const dispatch = useDispatch(); */
 
     return (
         <Container>
-            <h1>Vite + React</h1>
+
+            <Button>
+                Gestion de inventario
+            </Button>
+
+            <Button>
+                Gestion de inventario
+            </Button>
+
+            <Button>
+                Gestion de Ventas
+            </Button>
+            {/* <h1>Vite + React</h1>
             <div className="card">
                 <Button variant='contained' onClick={() => dispatch(increment())}>
                     increment
@@ -38,7 +50,7 @@ const Home = () => {
             </div>
             <p className="read-the-docs">
                 Click on the Vite and React logos to learn more
-            </p>
+            </p> */}
         </Container>
     )
 }
