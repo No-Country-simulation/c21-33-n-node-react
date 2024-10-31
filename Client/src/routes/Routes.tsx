@@ -10,6 +10,7 @@ import RegisterUSerAccount from "@/pages/registerUserAccount/RegisterUSerAccount
 import NewEmploye from "@/pages/newEmploye/NewEmploye";
 import EmployeProfile from "@/pages/employeProfile/EmployeProfile";
 import ProductAdd from "@/pages/productAdd/ProductAdd";
+import EmployeList from "@/pages/employeList/EmployeList";
 
 const Routes = () => {
     return (
@@ -26,7 +27,7 @@ const Routes = () => {
                 <Route path={routesPath.profileUser} element={<Profile />} />
                 <Route path="inventory" element={<Home />} />
                 <Route path="sales" element={<Home />} />
-                <Route path={routesPath.employes} element={<Home />} />
+                <Route path={routesPath.employesAll} element={<EmployeList />} />
                 <Route path={routesPath.newEmploye} element={<NewEmploye />} />
                 <Route path={routesPath.profileEmploye} element={<EmployeProfile />} />
                 <Route path={routesPath.editEmployeInfo} element={<NewEmploye />} />

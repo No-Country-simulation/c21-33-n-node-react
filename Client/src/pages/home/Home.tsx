@@ -1,5 +1,6 @@
 //import React from 'react'
-import { Button, Container } from '@mui/material'
+import { HomeStyles } from '@/styles/componets/Home';
+import { Button, Container, Grid2 } from '@mui/material'
 //import { useDispatch, useSelector } from 'react-redux';
 //import { RootState } from '../../redux/store';
 //import { decrement, increment, incrementByAmount } from '../../redux/features/counter/counterSlice';
@@ -7,23 +8,33 @@ import { Button, Container } from '@mui/material'
 
 const Home = () => {
 
+    const { classes: homeStyles } = HomeStyles();
     /* const { value } = useSelector((state: RootState) => state.counter);
     const dispatch = useDispatch(); */
 
     return (
         <Container>
 
-            <Button>
-                Gestion de inventario
-            </Button>
+            <Grid2 className={homeStyles.routeButtons_container}>
 
-            <Button>
-                Gestion de inventario
-            </Button>
+                <Grid2 className={homeStyles.routeButtons_box}>
+                    <Button className={homeStyles.routeButtons_button}>
+                        Gestion de inventario
+                    </Button>
+                </Grid2>
 
-            <Button>
-                Gestion de Ventas
-            </Button>
+                <Grid2 className={homeStyles.routeButtons_box}>
+                    <Button className={homeStyles.routeButtons_button}>
+                        Gestion de inventario
+                    </Button>
+                </Grid2>
+
+                <Grid2 className={homeStyles.routeButtons_box}>
+                    <Button className={homeStyles.routeButtons_button}>
+                        Gestion de Ventas
+                    </Button>
+                </Grid2>
+            </Grid2>
             {/* <h1>Vite + React</h1>
             <div className="card">
                 <Button variant='contained' onClick={() => dispatch(increment())}>
