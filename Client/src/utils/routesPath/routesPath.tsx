@@ -4,6 +4,7 @@ interface Routes {
 
 export const routesPath: Routes = {
     editEmployeInfo: 'employe-edit',
+    employesAll: 'employe-all',
     home: '/app',
     landing: '/',
     login: '/login',
@@ -16,6 +17,7 @@ export const routesPath: Routes = {
 
 export const routesLinkTo: Routes = {
     editEmployeInfo: `${routesPath.home}/${routesPath.editEmployeInfo}`,
+    employesAll: `${routesPath.home}/${routesPath.employeAll}`,
     home: `${routesPath.home}`,
     landing: `${routesPath.landing}`,
     login: `${routesPath.login}`,
