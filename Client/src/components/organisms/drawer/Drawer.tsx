@@ -9,7 +9,7 @@ import {
 } from '../../../utils/icons/Index'
 
 
-import { Box, Grid2, Typography } from "@mui/material"
+import { Box, Grid2, IconButton, Typography } from "@mui/material"
 import { useNavigate } from "react-router-dom";
 import { routesLinkTo } from "@/utils/routesPath/routesPath";
 
@@ -68,7 +68,13 @@ const Drawer = () => {
         }}
         >
 
-            <IconLogoDrawer styles={stylesDrawer.mainIconSidebar} />
+            <IconButton
+                onClick={() => handleNavigate(routesLinkTo.home)}
+            >
+                <IconLogoDrawer
+                    styles={stylesDrawer.mainIconSidebar}
+                />
+            </IconButton>
 
             {
                 menuOptions.map(option => (
