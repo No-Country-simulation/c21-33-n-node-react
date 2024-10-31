@@ -1,14 +1,17 @@
 import { StylesButtoms } from "@/components/atoms/buttoms/StylesButtoms";
 import InputText from "@/components/organisms/inputText/InputText"
+import ModalSuccess from "@/components/organisms/modalSuccess/ModalSuccess";
 import { ProductAddStyles } from "@/styles/componets/ProductAddStyles";
 import { MainStyles } from "@/styles/MainStyles";
 import { RegisterProduct } from "@/utils/interfaces/productsInterfaces";
 import { regExValidation } from "@/utils/validations/Validations";
 import { Box, Button, Container, Grid2, Typography } from "@mui/material"
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 const ProductAdd = () => {
 
+    const [isOpenModal, setIsOpenModal] = useState(false);
     const { control, handleSubmit, /* setValue */ } = useForm<RegisterProduct>({
         defaultValues: {
             productCode: '',
@@ -24,11 +27,17 @@ const ProductAdd = () => {
     const { classes: stylesButtons } = StylesButtoms();
 
     const handleSubmitData: SubmitHandler<RegisterProduct> = (data) => {
-        console.log(data)
+        console.log(data);
+        setIsOpenModal(true);
     };
 
     return (
         <Container>
+
+            <ModalSuccess
+                isOpenModal={isOpenModal}
+                setIsOpenModal={setIsOpenModal}
+            />
 
             <Typography className={styles.titleSection}>
                 Registro de productos

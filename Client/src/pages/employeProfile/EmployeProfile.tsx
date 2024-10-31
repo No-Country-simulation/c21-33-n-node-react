@@ -1,6 +1,5 @@
 import DeleteButton from "@/components/atoms/buttoms/DeleteButton";
 import PrimaryButtom from "@/components/atoms/buttoms/PrimaryButtom";
-import InputText from "@/components/organisms/inputText/InputText";
 import InputTextDisabled from "@/components/organisms/inputTextDisabled/InputTextDisabled";
 import { EmployeProfileStyles } from "@/styles/componets/EmployeProfileStyles";
 import { MainStyles } from "@/styles/MainStyles";
