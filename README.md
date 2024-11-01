@@ -81,6 +81,7 @@ This human resource management application allows companies to manage and optimi
 ![image](https://img.shields.io/badge/Google%20Meet-00897B?style=for-the-badge&logo=google-meet&logoColor=white)
 
 ## Promotional video
+https://youtu.be/XnQ7_s7qeIo
 
 ## Run  Locally
 
