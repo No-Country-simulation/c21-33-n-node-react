@@ -2,7 +2,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { Grid2 } from '@mui/material';
+import { Button, Grid2 } from '@mui/material';
 import { StylesOrganism } from '../StylesOrganism';
 import PrimaryButtom from '@/components/atoms/buttoms/PrimaryButtom';
 import { ModalSuccessInterface } from '@/utils/interfaces/ModalsInterfaces';
@@ -23,7 +23,10 @@ const style = {
 
 const ModalSuccess = ({
     isOpenModal,
-    setIsOpenModal
+    setIsOpenModal,
+    status,
+    message,
+    onAccept
 }: ModalSuccessInterface) => {
 
     const [open, setOpen] = React.useState(false);
@@ -33,6 +36,11 @@ const ModalSuccess = ({
         setIsOpenModal(false);
     };
     const { classes: stylesOrganism } = StylesOrganism();
+
+    const handleAcceptAtion = () => {
+        handleClose();
+        onAccept && onAccept();
+    };
 
     React.useEffect(() => {
         isOpenModal && handleOpen();
@@ -50,21 +58,31 @@ const ModalSuccess = ({
                     <Grid2 className={stylesOrganism.modalContainer}>
                         <Box className={stylesOrganism.modalHeader}>
                             <Typography className={stylesOrganism.modalTitle}>
-                                !Hecho!
+                                {status === 'success' && 'Hecho!'}
+                                {status === 'fail' && 'Algo ha fallado'}
+                                {status === 'question' && 'Advertencia'}
                             </Typography>
                         </Box>
 
                         <Box className={stylesOrganism.modalBody}>
                             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                                La accion se ha completado con exito
+                                {message}
                             </Typography>
                         </Box>
 
                         <Box className={stylesOrganism.modalFooter}>
+
+                            {onAccept && (
+                                <Button onClick={handleClose}>
+                                    Cancelar
+                                </Button>
+                            )}
+
                             <PrimaryButtom
                                 text='Aceptar'
-                                onClick={handleClose}
+                                onClick={handleAcceptAtion}
                             />
+
                         </Box>
                     </Grid2>
                 </Box>

@@ -29,7 +29,7 @@ const Routes = () => {
                 <Route path="sales" element={<Home />} />
                 <Route path={routesPath.employesAll} element={<EmployeList />} />
                 <Route path={routesPath.newEmploye} element={<NewEmploye />} />
-                <Route path={routesPath.profileEmploye} element={<EmployeProfile />} />
+                <Route path={`${routesPath.profileEmploye}/:id`} element={<EmployeProfile />} />
                 <Route path={routesPath.editEmployeInfo} element={<NewEmploye />} />
                 <Route path={routesPath.productAdd} element={<ProductAdd />} />
             </Route>

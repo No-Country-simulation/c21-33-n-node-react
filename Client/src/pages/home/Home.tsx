@@ -1,6 +1,8 @@
 //import React from 'react'
 import { HomeStyles } from '@/styles/componets/Home';
+import { routesLinkTo } from '@/utils/routesPath/routesPath';
 import { Button, Container, Grid2 } from '@mui/material'
+import { useNavigate } from 'react-router-dom';
 //import { useDispatch, useSelector } from 'react-redux';
 //import { RootState } from '../../redux/store';
 //import { decrement, increment, incrementByAmount } from '../../redux/features/counter/counterSlice';
@@ -9,6 +11,25 @@ import { Button, Container, Grid2 } from '@mui/material'
 const Home = () => {
 
     const { classes: homeStyles } = HomeStyles();
+    const navigate = useNavigate();
+    const options = [
+        {
+            name: 'Gestion de empleados',
+            url: routesLinkTo.employesAll
+        },
+        {
+            name: 'Gestion de inventario',
+            url: routesLinkTo.home
+        },
+        {
+            name: 'Gestion de ventas',
+            url: routesLinkTo.home
+        },
+    ]
+
+    const handleClickNavigate = (url: string) => {
+        navigate(url)
+    };
     /* const { value } = useSelector((state: RootState) => state.counter);
     const dispatch = useDispatch(); */
 
@@ -17,23 +38,20 @@ const Home = () => {
 
             <Grid2 className={homeStyles.routeButtons_container}>
 
-                <Grid2 className={homeStyles.routeButtons_box}>
-                    <Button className={homeStyles.routeButtons_button}>
-                        Gestion de inventario
-                    </Button>
-                </Grid2>
+                {options.map(option => (
+                    <Grid2
+                        key={option.name}
+                        className={homeStyles.routeButtons_box}
+                    >
+                        <Button
+                            className={homeStyles.routeButtons_button}
+                            onClick={() => handleClickNavigate(option.url)}
+                        >
+                            {option.name}
+                        </Button>
+                    </Grid2>
+                ))}
 
-                <Grid2 className={homeStyles.routeButtons_box}>
-                    <Button className={homeStyles.routeButtons_button}>
-                        Gestion de inventario
-                    </Button>
-                </Grid2>
-
-                <Grid2 className={homeStyles.routeButtons_box}>
-                    <Button className={homeStyles.routeButtons_button}>
-                        Gestion de Ventas
-                    </Button>
-                </Grid2>
             </Grid2>
             {/* <h1>Vite + React</h1>
             <div className="card">

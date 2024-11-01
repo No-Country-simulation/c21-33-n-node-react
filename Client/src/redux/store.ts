@@ -3,7 +3,7 @@ import authSlice from './features/auth/auth.slice.redux.ts';
 import counterReducer from './features/counter/counterSlice.ts';
 import drawerReducer from './features/drawer/drawerSlice.ts';
 import themeReducer from './features/themeMode/themeSlice.ts';
-
+import employesReducer from './features/employes/employes.ts';
 
 export const store = configureStore({
     reducer: {
@@ -11,6 +11,7 @@ export const store = configureStore({
         counter: counterReducer,
         drawer: drawerReducer,
         theme: themeReducer,
+        employes: employesReducer
     }
 });
 

@@ -30,7 +30,8 @@ export const StylesOrganism = makeStyles()((theme) => ({
     },
 
     modalFooter: {
-        textAlign: 'center',
+        display: 'flex',
+        justifyContent: 'space-evenly',
         margin: '0 0 1rem 0'
     }
 }))

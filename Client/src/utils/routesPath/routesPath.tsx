@@ -17,7 +17,7 @@ export const routesPath: Routes = {
 
 export const routesLinkTo: Routes = {
     editEmployeInfo: `${routesPath.home}/${routesPath.editEmployeInfo}`,
-    employesAll: `${routesPath.home}/${routesPath.employeAll}`,
+    employesAll: `${routesPath.home}/${routesPath.employesAll}`,
     home: `${routesPath.home}`,
     landing: `${routesPath.landing}`,
     login: `${routesPath.login}`,

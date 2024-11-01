@@ -1,25 +1,73 @@
 import DeleteButton from "@/components/atoms/buttoms/DeleteButton";
 import PrimaryButtom from "@/components/atoms/buttoms/PrimaryButtom";
 import InputTextDisabled from "@/components/organisms/inputTextDisabled/InputTextDisabled";
+import ModalSuccess from "@/components/organisms/modalSuccess/ModalSuccess";
+import { RootState } from "@/redux/store";
 import { EmployeProfileStyles } from "@/styles/componets/EmployeProfileStyles";
 import { MainStyles } from "@/styles/MainStyles";
+import { EmployeData } from "@/utils/interfaces";
 import { routesLinkTo } from "@/utils/routesPath/routesPath";
+import { getDate } from "@/utils/utilities/Utilities";
 import { Container, Grid2, Typography } from "@mui/material"
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EmployeProfile = () => {
 
     const { classes: styles } = MainStyles();
     const { classes: stylesEmployeProfile } = EmployeProfileStyles();
     const navigate = useNavigate();
-
+    const { employes } = useSelector((state: RootState) => state.employes);
     const handleNavigate = () => {
         navigate(routesLinkTo.editEmployeInfo)
     };
+    const [userData, setUserData] = useState<EmployeData>();
+    const [isOpenModal, setIsOpenModal] = useState(false);
+    const [modalInfo, setModalInfo] = useState({
+        status: '',
+        message: ''
+    })
+
+    const { id } = useParams();
+
+    const handleUnsubscribeEmploye = () => {
+        setModalInfo({
+            status: 'question',
+            message: 'Seguro que deseas realizar esta accion?'
+        });
+        setIsOpenModal(true)
+    }
+
+    const ifUnsuscribeEmploye = () => {
+        console.log('Unsuscribed', { userData })
+        const employeUnsuscribe = { ...userData, status: 'inactive', finishData: getDate().formattedDate };
+        console.log({ employeUnsuscribe })
+    };
+
+    useEffect(() => {
+        console.log(id);
+        const getUserById = () => {
+            const employe = employes.find(employe => employe.legado === id);
+            if (employe) {
+                setUserData(employe);
+                console.log({ employe })
+            } else {
+                console.log('No se encontro usuario')
+            }
+        }
+        getUserById();
+    }, [id]);
 
     return (
         <Container>
-
+            <ModalSuccess
+                isOpenModal={isOpenModal}
+                setIsOpenModal={setIsOpenModal}
+                status={modalInfo.status}
+                message={modalInfo.message}
+                onAccept={ifUnsuscribeEmploye}
+            />
             <Grid2
                 size={{ xs: 12 }}
                 className={stylesEmployeProfile.container_headerSection}
@@ -30,7 +78,8 @@ const EmployeProfile = () => {
                 />
 
                 <DeleteButton
-                    text="Eliminar datos"
+                    text="Dar de baja"
+                    onClick={handleUnsubscribeEmploye}
                 />
             </Grid2>
 
@@ -52,7 +101,7 @@ const EmployeProfile = () => {
 
                     <InputTextDisabled
                         label={''}
-                        value={'02-02-2020'}
+                        value={userData?.legado || 'No especificado'}
                         size={6}
                     />
 
@@ -60,106 +109,102 @@ const EmployeProfile = () => {
 
                 <InputTextDisabled
                     label={'Fecha de inicio'}
-                    value={'02-02-2020'}
+                    value={userData?.startDate || 'No especificado'}
                     size={6}
                 />
 
                 <InputTextDisabled
                     label={'Fecha de finalizacion'}
-                    value={'02-02-2020'}
+                    value={'No especificado'}
                     size={6}
                 />
 
                 <InputTextDisabled
                     label={'Correo electronico'}
-                    value={'02-02-2020'}
+                    value={userData?.email || 'No especificado'}
                     size={12}
                 />
 
                 <InputTextDisabled
                     label={'Nombres'}
-                    value={'02-02-2020'}
+                    value={userData?.firstName || 'No especificado'}
                     size={6}
                 />
 
                 <InputTextDisabled
                     label={'Apellidos'}
-                    value={'02-02-2020'}
+                    value={userData?.lastName || 'No especificado'}
                     size={6}
                 />
 
                 <InputTextDisabled
                     label={'Direccion'}
-                    value={'02-02-2020'}
+                    value={userData?.streetAddress || 'No especificado'}
                     size={12}
                 />
 
                 <InputTextDisabled
                     label={'Piso'}
-                    value={'02-02-2020'}
+                    value={userData?.floor || 'No especificado'}
                     size={6}
                 />
 
                 <InputTextDisabled
                     label={'Departamento'}
-                    value={'02-02-2020'}
+                    value={userData?.apartment || 'No especificado'}
                     size={6}
                 />
 
                 <InputTextDisabled
                     label={'DNI'}
-                    value={'02-02-2020'}
+                    value={userData?.dni || 'No especificado'}
                     size={6}
                 />
 
                 <InputTextDisabled
                     label={'Fecha de nacimiento'}
-                    value={'02-02-2020'}
+                    value={userData?.birthDate || 'No especificado'}
                     size={6}
                 />
 
                 <InputTextDisabled
                     label={'Pasaporte'}
-                    value={'02-02-2020'}
+                    value={userData?.passport || 'No especificado'}
                     size={12}
                 />
 
                 <InputTextDisabled
                     label={'Pais'}
-                    value={'02-02-2020'}
+                    value={userData?.country || 'No especificado'}
                     size={12}
                 />
 
                 <InputTextDisabled
                     label={'Localidad'}
-                    value={'02-02-2020'}
+                    value={userData?.city || 'No especificado'}
                     size={12}
                 />
 
                 <InputTextDisabled
                     label={'Celular'}
-                    value={'02-02-2020'}
+                    value={userData?.phone || 'No especificado'}
                     size={6}
                 />
 
                 <InputTextDisabled
                     label={'Telefono hogar'}
-                    value={'02-02-2020'}
+                    value={userData?.phoneHouse || 'No especificado'}
                     size={6}
                 />
 
                 <InputTextDisabled
                     label={'Codigo postal'}
-                    value={'02-02-2020'}
+                    value={userData?.postalCode || 'No especificado'}
                     size={6}
                 />
 
             </Grid2>
 
-            {/* <InputText
-                label='Nombres'
-                size={6}
-            /> */}
         </Container>
     )
 }

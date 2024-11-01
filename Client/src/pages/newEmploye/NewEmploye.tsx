@@ -4,13 +4,18 @@ import { Box, Button, Container, Grid2, Typography } from "@mui/material"
 import { SubmitHandler, useForm } from "react-hook-form";
 import ImgEmploye from '../../assets/images/imag_employe.png'
 import { LogInStyles } from "@/styles/componets/LogInStyles";
-import { RegisterNewEmploye } from "@/utils/interfaces";
+import { EmployeData } from "@/utils/interfaces";
 import { MainStyles } from "@/styles/MainStyles";
 import { StylesButtoms } from "@/components/atoms/buttoms/StylesButtoms";
+import { useDispatch, useSelector } from "react-redux";
+import { addEmploye } from "@/redux/features/employes/employes";
+import { RootState } from "@/redux/store";
+import ModalSuccess from "@/components/organisms/modalSuccess/ModalSuccess";
+import { useState } from "react";
 
 const NewEmploye = () => {
 
-    const { control, handleSubmit, /* setValue */ } = useForm<RegisterNewEmploye>({
+    const { control, handleSubmit, /* setValue */ } = useForm<EmployeData>({
         defaultValues: {
             firstName: '',
             lastName: '',
@@ -31,16 +36,44 @@ const NewEmploye = () => {
         }
     });
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [actionStatus, setActionStatus] = useState({
+        status: '',
+        message: ''
+    });
     const { classes: styles } = MainStyles();
     const { classes: stylesLogIn } = LogInStyles();
     const { classes: stylesButtons } = StylesButtoms();
+    const dispatch = useDispatch();
+    const { employes } = useSelector((state: RootState) => state.employes);
 
-    const handleSubmitData: SubmitHandler<RegisterNewEmploye> = (data) => {
-        console.log(data)
+    const handleSubmitData: SubmitHandler<EmployeData> = (data) => {
+        const existLegadoCode = employes.find(employe => employe.legado === data.legado);
+        if (existLegadoCode) {
+            setActionStatus({
+                status: 'error',
+                message: 'Ya existe un empleado con este numero de legajo'
+            })
+            setIsModalOpen(true);
+        } else {
+            setActionStatus({
+                status: 'success',
+                message: 'El empleado se ha registrado con exito'
+            })
+            setIsModalOpen(true);
+            dispatch(addEmploye({ ...data, status: 'activo' }));
+        }
+
     };
 
     return (
         <Container>
+            <ModalSuccess
+                isOpenModal={isModalOpen}
+                setIsOpenModal={setIsModalOpen}
+                status={actionStatus.status}
+                message={actionStatus.message}
+            />
 
             <Typography
                 className={`

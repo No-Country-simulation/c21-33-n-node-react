@@ -45,7 +45,7 @@ const Drawer = () => {
         {
             icon: IconUsers,
             title: 'Empleados',
-            path: routesLinkTo.employeAll,
+            path: routesLinkTo.employesAll,
         },
         {
             icon: IconEntryData,

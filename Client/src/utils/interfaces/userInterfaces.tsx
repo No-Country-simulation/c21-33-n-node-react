@@ -12,23 +12,24 @@ export interface RegisterUserAccount {
     passwordRepeat: string
 };
 
-export interface RegisterNewEmploye {
-    firstName: string,
-    lastName: string,
-    streetAddress: string,
-    floor: string,
+export interface EmployeData {
     apartment: string,
-    dni: string,
     birthDate: string,
-    passport: string,
-    country: string,
     city: string,
+    country: string,
+    dni: string,
+    email: string,
+    firstName: string,
+    floor: string,
+    lastName: string,
+    legado: string,
+    passport: string,
     phone: string,
     phoneHouse: string,
     postalCode: string,
-    legado: string,
-    email: string,
     startDate: string,
+    status: string,
+    streetAddress: string,
 };
 
 export interface InputTextRegisterAccount {
