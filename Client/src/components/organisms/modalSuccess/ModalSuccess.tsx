@@ -59,7 +59,7 @@ const ModalSuccess = ({
                         <Box className={stylesOrganism.modalHeader}>
                             <Typography className={stylesOrganism.modalTitle}>
                                 {status === 'success' && 'Hecho!'}
-                                {status === 'fail' && 'Algo ha fallado'}
+                                {status === 'error' && 'Algo ha fallado'}
                                 {status === 'question' && 'Advertencia'}
                             </Typography>
                         </Box>

@@ -11,11 +11,14 @@ import Avatar from '@mui/material/Avatar';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 //import { ReactComponent as Logo } from "../../../../src/assets/icons/icon-logo.svg";
+import Logo from "../../../../src/assets/icons/icon-logo.svg";
 import { useTheme } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../redux/store';
 import { openDrawer } from '../../../redux/features/drawer/drawerSlice';
 import { Close } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
+import { routesLinkTo } from '@/utils/routesPath/routesPath';
 
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
@@ -24,8 +27,8 @@ function ResponsiveAppBar() {
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     const isOpenDrawer = useSelector((state: RootState) => state.drawer.value);
     const dispatch = useDispatch();
-
     const theme = useTheme();
+    const navigate = useNavigate();
 
     /* const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -46,6 +49,10 @@ function ResponsiveAppBar() {
         setAnchorElUser(null);
     };
 
+    const handleNavigate = () => {
+        navigate(routesLinkTo.home)
+    };
+
     return (
         <AppBar
             position="static"
@@ -56,8 +63,10 @@ function ResponsiveAppBar() {
             <Container maxWidth="xl" >
                 <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
 
-                    {/*  @ts-ignore */}
-                    {/* <Logo style={{ width: '5rem', height: '5rem' }} /> */}
+                    <Logo
+                        style={{ width: '5rem', height: '5rem' }}
+                        onClick={handleNavigate}
+                    />
 
                     <Box sx={{ flexGrow: 0, display: 'flex' }}>
 

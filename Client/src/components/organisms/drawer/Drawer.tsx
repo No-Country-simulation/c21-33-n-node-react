@@ -35,7 +35,7 @@ const Drawer = () => {
         {
             icon: IconInvetory,
             title: 'Inventario',
-            path: routesLinkTo.profile,
+            path: routesLinkTo.productList,
         },
         {
             icon: IconGrowing,

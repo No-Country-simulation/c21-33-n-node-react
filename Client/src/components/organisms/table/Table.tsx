@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { routesLinkTo } from '@/utils/routesPath/routesPath';
+import { Product } from '@/redux/features/products/products';
+import { esES } from '@mui/material/locale';
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', width: 70 },
@@ -29,14 +31,29 @@ const columns: GridColDef[] = [
             )
         }
     },
-    /* {
-        field: 'position',
-        headerName: 'Puesto',
-        description: 'This column has a value getter and is not sortable.',
-        sortable: false,
-        width: 160,
-        valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`,
-    }, */
+];
+
+const columns2: GridColDef[] = [
+    { field: 'id', headerName: 'Codigo', width: 70 },
+    { field: 'cost', headerName: 'Cost', width: 100 },
+    { field: 'price', headerName: 'Precio', width: 130 },
+    { field: 'productName', headerName: 'Nombre', width: 130 },
+    { field: 'qty', headerName: 'Cantidad', type: 'number', width: 90 },
+    {
+        field: 'action', headerName: 'Ver', width: 160, renderCell: (params) => {
+            const navigate = useNavigate();
+            const handleClick = () => {
+                console.log(`${routesLinkTo.profileEmploye}/${params.row.id}`)
+                navigate(`${routesLinkTo.profileEmploye}/${params.row.id}`)
+            };
+
+            return (
+                <Button onClick={handleClick}>
+                    Ver
+                </Button>
+            )
+        }
+    },
 ];
 
 /* const rows = [
@@ -69,10 +86,11 @@ interface TableProps {
 }
 
 const Table = ({
-    employesList
+    employesList,
+    productList
 }) => {
 
-    const [rows, setRows] = useState<EmployeTableData>();
+    const [rows, setRows] = useState<EmployeTableData | Product>();
 
     useEffect(() => {
         console.log(employesList)
@@ -97,14 +115,39 @@ const Table = ({
         }
     }, [employesList]);
 
+    useEffect(() => {
+        console.log(productList)
+        if (productList?.length > 0) {
+
+            const formatData = () => {
+                const data: Product[] = productList.map(product => ({
+                    id: product.code,
+                    cost: product.cost,
+                    price: product.price,
+                    productName: product.productName,
+                    qty: product.qty,
+                }));
+                console.log({ data })
+                setRows(data)
+            };
+
+            formatData();
+        }
+    }, [employesList]);
+
     return (
         <Paper sx={{ height: 400, width: '100%' }}>
             <DataGrid
                 rows={rows}
-                columns={columns}
+                columns={productList ? columns2 : columns}
                 initialState={{ pagination: { paginationModel } }}
                 pageSizeOptions={[5, 10, 20]}
-                //checkboxSelection
+                localeText={{
+                    noRowsLabel: "No hay datos disponibles",
+                    
+                    labelRowsPerPage: 'Resultados por página',
+                    footerPaginationRowsPerPage: "Resultados por página", // Cambia el texto aquí
+                }}
                 sx={{ border: 0 }}
             />
         </Paper>

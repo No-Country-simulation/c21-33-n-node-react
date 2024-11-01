@@ -2,6 +2,7 @@ import DeleteButton from "@/components/atoms/buttoms/DeleteButton";
 import PrimaryButtom from "@/components/atoms/buttoms/PrimaryButtom";
 import InputTextDisabled from "@/components/organisms/inputTextDisabled/InputTextDisabled";
 import ModalSuccess from "@/components/organisms/modalSuccess/ModalSuccess";
+import { updateEmployes } from "@/redux/features/employes/employes";
 import { RootState } from "@/redux/store";
 import { EmployeProfileStyles } from "@/styles/componets/EmployeProfileStyles";
 import { MainStyles } from "@/styles/MainStyles";
@@ -10,7 +11,7 @@ import { routesLinkTo } from "@/utils/routesPath/routesPath";
 import { getDate } from "@/utils/utilities/Utilities";
 import { Container, Grid2, Typography } from "@mui/material"
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useParams } from "react-router-dom";
 
 const EmployeProfile = () => {
@@ -28,8 +29,8 @@ const EmployeProfile = () => {
         status: '',
         message: ''
     })
-
     const { id } = useParams();
+    const dispatch = useDispatch()
 
     const handleUnsubscribeEmploye = () => {
         setModalInfo({
@@ -40,9 +41,13 @@ const EmployeProfile = () => {
     }
 
     const ifUnsuscribeEmploye = () => {
-        console.log('Unsuscribed', { userData })
-        const employeUnsuscribe = { ...userData, status: 'inactive', finishData: getDate().formattedDate };
-        console.log({ employeUnsuscribe })
+        //console.log('Unsuscribed', { userData, employes })
+        const employeUnsuscribe: EmployeData = { ...userData, status: 'inactive', finishDate: getDate().formattedDate };
+        const employeIndex = employes.findIndex(employe => employe.legado === id);
+        const newEmployeList: EmployeData[] = [...employes];
+        newEmployeList[employeIndex] = employeUnsuscribe;
+        console.log({ employeUnsuscribe, newEmployeList })
+        dispatch(updateEmployes(newEmployeList));
     };
 
     useEffect(() => {
@@ -115,7 +120,7 @@ const EmployeProfile = () => {
 
                 <InputTextDisabled
                     label={'Fecha de finalizacion'}
-                    value={'No especificado'}
+                    value={userData?.finishDate || 'No especificado'}
                     size={6}
                 />
 

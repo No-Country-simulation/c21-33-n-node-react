@@ -5,18 +5,25 @@ import { Controller, useForm } from "react-hook-form";
 import { regExValidation } from "../../utils/validations/Validations";
 import { LogInData } from "../../utils/interfaces/userInterfaces";
 import { LogInStyles } from "../../styles/componets/LogInStyles";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { StylesButtoms } from "../../components/atoms/buttoms/StylesButtoms";
 import ResponsiveAppBar from "../../components/organisms/navBar/NavBar";
 import { getDate } from "../../utils/utilities/Utilities";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { routesLinkTo } from "@/utils/routesPath/routesPath";
+import ModalSuccess from "@/components/organisms/modalSuccess/ModalSuccess";
 
 const Login = () => {
 
   const { classes: styles } = MainStyles();
   const { classes: stylesLogIn } = LogInStyles();
   const { classes: stylesButtoms } = StylesButtoms();
+
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [modalInfo, setModalInfo] = useState({
+    status: '',
+    message: ''
+  })
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -35,18 +42,34 @@ const Login = () => {
       password: ""
     },
   });
-
+  const navigate = useNavigate();
   const getDateTime = getDate();
   console.log({ getDateTime })
 
   const handleSubmitData = async (data: LogInData) => {
-    console.log(data)
+    console.log(data);
+    if (data.email === 'admin@gmail.com' && data.password === 'admin1234') {
+      navigate(routesLinkTo.home)
+    } else {
+      setModalInfo({
+        status: 'error',
+        message: 'Verifica las credenciales ingresadas'
+      });
+      setIsOpenModal(true);
+    }
+
   };
 
   return (
     <>
       <ResponsiveAppBar />
       <Container className={`${styles.container} ${stylesLogIn.containerStyles}`}>
+        <ModalSuccess
+          isOpenModal={isOpenModal}
+          setIsOpenModal={setIsOpenModal}
+          status={modalInfo.status}
+          message={modalInfo.message}
+        />
         <Grid2 container className={stylesLogIn.mainContent}>
 
           <Grid2 size={{ xs: 12, md: 6 }} className={stylesLogIn.loginForm_box}>

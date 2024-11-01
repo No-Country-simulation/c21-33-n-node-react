@@ -6,15 +6,16 @@ interface Employe {
     birthDate: string,
     city: string,
     country: string,
-    dni: string,
+    dni: string | undefined,
     email: string,
+    finishDate: string | undefined,
     firstName: string,
     floor: string,
     lastName: string,
     legado: string,
-    passport: string,
+    passport: string | undefined,
     phone: string,
-    phoneHouse: string,
+    phoneHouse: string | undefined,
     postalCode: string,
     startDate: string,
     status: string,
@@ -35,12 +36,16 @@ export const employesSlice = createSlice({
     reducers: {
         addEmploye: (state, action: PayloadAction<Employe>) => {
             state.employes.push(action.payload)
+        },
+        updateEmployes: (state, action: PayloadAction<Employe[]>) => {
+            state.employes = action.payload
         }
     }
 });
 
 export const {
-    addEmploye
+    addEmploye,
+    updateEmployes
 } = employesSlice.actions;
 
 export default employesSlice.reducer;

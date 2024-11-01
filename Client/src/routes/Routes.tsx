@@ -11,6 +11,7 @@ import NewEmploye from "@/pages/newEmploye/NewEmploye";
 import EmployeProfile from "@/pages/employeProfile/EmployeProfile";
 import ProductAdd from "@/pages/productAdd/ProductAdd";
 import EmployeList from "@/pages/employeList/EmployeList";
+import ProductList from "@/pages/productList/ProductList";
 
 const Routes = () => {
     return (
@@ -25,7 +26,7 @@ const Routes = () => {
             <Route path={routesPath.home} element={<ContentWrapper />} >
                 <Route index element={<Home />} />
                 <Route path={routesPath.profileUser} element={<Profile />} />
-                <Route path="inventory" element={<Home />} />
+                <Route path={routesPath.productList} element={<ProductList />} />
                 <Route path="sales" element={<Home />} />
                 <Route path={routesPath.employesAll} element={<EmployeList />} />
                 <Route path={routesPath.newEmploye} element={<NewEmploye />} />

@@ -19,7 +19,7 @@ const Home = () => {
         },
         {
             name: 'Gestion de inventario',
-            url: routesLinkTo.home
+            url: routesLinkTo.productList
         },
         {
             name: 'Gestion de ventas',

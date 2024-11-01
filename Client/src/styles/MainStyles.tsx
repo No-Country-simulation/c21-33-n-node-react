@@ -20,6 +20,11 @@ export const MainStyles = makeStyles()((theme) => ({
         margin: '0 auto', textAlign: 'center'
     },
 
+    rigth_Element: {
+        display: 'flex',
+        justifyContent: 'right'
+    },
+
     marginTop_Element: {
         marginTop: '1rem'
     },

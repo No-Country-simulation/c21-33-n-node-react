@@ -14,7 +14,6 @@ const EmployeList = () => {
 
     useEffect(() => {
         setEmployesList(employes);
-        console.log({ employes, employesList })
     }, [employes])
 
     return (

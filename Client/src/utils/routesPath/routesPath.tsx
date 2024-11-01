@@ -10,6 +10,7 @@ export const routesPath: Routes = {
     login: '/login',
     newEmploye: 'new-employe',
     productAdd: 'product-add',
+    productList: 'products-all',
     profileEmploye: 'profile-employe',
     profileUser: 'profile-user',
     registerAccount: '/create-account'
@@ -23,6 +24,7 @@ export const routesLinkTo: Routes = {
     login: `${routesPath.login}`,
     newEmploye: `${routesPath.home}/${routesPath.newEmploye}`,
     productAdd: `${routesPath.home}/${routesPath.productAdd}`,
+    productList: `${routesPath.home}/${routesPath.productList}`,
     profileEmploye: `${routesPath.home}/${routesPath.profileEmploye}`,
     profileUser: `${routesPath.home}/${routesPath.profileUser}`,
     registerAccount: '/create-account'

@@ -1,34 +1,57 @@
 import { StylesButtoms } from "@/components/atoms/buttoms/StylesButtoms";
 import InputText from "@/components/organisms/inputText/InputText"
 import ModalSuccess from "@/components/organisms/modalSuccess/ModalSuccess";
+import { addProduct, Product } from "@/redux/features/products/products";
+import { RootState } from "@/redux/store";
 import { ProductAddStyles } from "@/styles/componets/ProductAddStyles";
 import { MainStyles } from "@/styles/MainStyles";
-import { RegisterProduct } from "@/utils/interfaces/productsInterfaces";
 import { regExValidation } from "@/utils/validations/Validations";
 import { Box, Button, Container, Grid2, Typography } from "@mui/material"
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 
 const ProductAdd = () => {
 
     const [isOpenModal, setIsOpenModal] = useState(false);
-    const { control, handleSubmit, /* setValue */ } = useForm<RegisterProduct>({
+    const [modalInfo, setModalInfo] = useState({
+        status: '',
+        message: ''
+    })
+    const { control, handleSubmit, /* setValue */ } = useForm<Product>({
         defaultValues: {
-            productCode: '',
+            code: '',
             productName: '',
-            productQty: '',
-            productPrice: '',
-            productCost: ''
+            qty: '',
+            price: '',
+            cost: ''
         }
     });
+    const { products } = useSelector((state: RootState) => state.products);
 
     const { classes: styles } = MainStyles();
     const { classes: stylesProductAdd } = ProductAddStyles();
     const { classes: stylesButtons } = StylesButtoms();
+    const dispatch = useDispatch();
 
-    const handleSubmitData: SubmitHandler<RegisterProduct> = (data) => {
+    const handleSubmitData: SubmitHandler<Product> = (data) => {
         console.log(data);
-        setIsOpenModal(true);
+        const isProductExist: Product | undefined = products.find(product => product.code === data.code);
+        if (isProductExist) {
+            console.log(isProductExist)
+            setModalInfo({
+                status: 'error',
+                message: 'Ya existe un producto con este codigo'
+            });
+            setIsOpenModal(true);
+        } else {
+            dispatch(addProduct(data))
+            setModalInfo({
+                status: 'success',
+                message: 'Producto agregado con exito'
+            });
+            setIsOpenModal(true);
+        }
     };
 
     return (
@@ -37,6 +60,8 @@ const ProductAdd = () => {
             <ModalSuccess
                 isOpenModal={isOpenModal}
                 setIsOpenModal={setIsOpenModal}
+                status={modalInfo.status}
+                message={modalInfo.message}
             />
 
             <Typography className={styles.titleSection}>
@@ -52,9 +77,9 @@ const ProductAdd = () => {
 
                         <InputText
                             autocomplete='on'
-                            inputName='productCode'
+                            inputName='code'
                             control={control}
-                            htmlFor='productCode'
+                            htmlFor='code'
                             label='Codigo del producto'
                             placeHolder='Ingresa codigo del producto'
                             inputType='text'
@@ -84,14 +109,14 @@ const ProductAdd = () => {
 
                         <InputText
                             autocomplete='on'
-                            inputName='productQty'
+                            inputName='qty'
                             control={control}
-                            htmlFor='productQty'
+                            htmlFor='qty'
                             label='Cantidad del producto'
                             placeHolder='Ingresa cantidad del producto'
                             inputType='text'
                             pattern={{
-                                value: regExValidation.general,
+                                value: regExValidation.number,
                                 message: 'Intentas ingresar caracteres no permitidos'
                             }}
                             required={true}
@@ -100,9 +125,9 @@ const ProductAdd = () => {
 
                         <InputText
                             autocomplete='on'
-                            inputName='productPrice'
+                            inputName='price'
                             control={control}
-                            htmlFor='productPrice'
+                            htmlFor='price'
                             label='Precio del producto'
                             placeHolder='Ingresa precio del producto'
                             inputType='text'
@@ -116,14 +141,14 @@ const ProductAdd = () => {
 
                         <InputText
                             autocomplete='on'
-                            inputName='productCost'
+                            inputName='cost'
                             control={control}
-                            htmlFor='productCost'
+                            htmlFor='cost'
                             label='Costo del producto'
                             placeHolder='Ingresa costo del producto'
                             inputType='text'
                             pattern={{
-                                value: regExValidation.general,
+                                value: regExValidation.number,
                                 message: 'Intentas ingresar caracteres no permitidos'
                             }}
                             required={true}
