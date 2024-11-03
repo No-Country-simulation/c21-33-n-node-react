@@ -17,8 +17,8 @@ This human resource management application allows companies to manage and optimi
 
 
 <div align="center"> 
-  <a href="https://urbano-burger.vercel.app/" target="_blank">    
-    <img 
+  <a href="">    
+    <img
       style="display: block; 
             margin-left: auto;
             margin-right: auto;
