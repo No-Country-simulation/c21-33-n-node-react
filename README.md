@@ -137,6 +137,7 @@ Start the server
 - [@DevJohanAdrian](https://www.github.com/DevJohanAdrian)
 - [@JosuValbuena](https://www.github.com/JosueValbuena)
 - [@hderwyn](https://www.github.com/hderwyn)
+- [@belu1238](https://github.com/belu1238).
   
 ### UI/UX
 - [Claudia Duo](www.linkedin.com/in/claudia-duo-b559025a)
